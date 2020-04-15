@@ -15,8 +15,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-class homePage {
-	private static WebDriver driver;
+class HomePage {
+private static WebDriver driver;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -37,7 +37,7 @@ class homePage {
 	}
 
 	@Test
-	void test(){
+	void WhyAsanaLink(){
 		driver.findElement(By.id("navigation__dropdown-toggle-why-asana")).click();
 		
 		WebElement dropDown = new WebDriverWait(driver, 10)
@@ -45,4 +45,3 @@ class homePage {
 		assertTrue(dropDown.isDisplayed());
 	}
 }
-// Thread.sleep(2000);
