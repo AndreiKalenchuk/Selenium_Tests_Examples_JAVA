@@ -16,6 +16,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import _page.HomePage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 class FooterLinks {
@@ -33,7 +34,7 @@ class FooterLinks {
 		driver = new ChromeDriver();
 //		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
-		driver.get("https://asana.com/");
+		driver.get();
 	}
 
 	@AfterEach
@@ -58,5 +59,11 @@ class FooterLinks {
 			assertTrue(driver.getCurrentUrl().contains(str));
 			driver.get("https://asana.com/");
 		}
+	}
+	
+	@Test
+	void forEachFooter() {
+		List<WebElement> countOfLinks = driver.findElements(By.id("globalFooter"));
+		essertTrue(countOfLinks.forEach(el => el.isCleackable());)
 	}
 }

@@ -2,6 +2,8 @@ package acana.com;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,7 +17,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-class HomePage {
+class Header {
 private static WebDriver driver;
 	
 	@BeforeAll
@@ -43,5 +45,12 @@ private static WebDriver driver;
 		WebElement dropDown = new WebDriverWait(driver, 10)
 				.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".navigation__dropdown.-active")));
 		assertTrue(dropDown.isDisplayed());
+	}
+	
+	@Test
+	void allSubLinks() {
+		List<WebElement> subLinks = driver.findElements(By.xpath("//a[@role='menuitem]"));
+		assertTrue(subLinks.size() == 44);
+		assertTrue(subLinks.forEach();) // is clickable
 	}
 }
