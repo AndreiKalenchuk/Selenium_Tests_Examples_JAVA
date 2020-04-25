@@ -32,7 +32,7 @@ class FooterLinks {
 	@BeforeEach
 	void setUp() {
 		driver = new ChromeDriver();
-//		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//		driver.manage().timeouts().i mplicitlyWait(10, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		driver.get();
 	}

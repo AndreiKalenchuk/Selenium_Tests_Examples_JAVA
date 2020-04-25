@@ -11,8 +11,10 @@ public class HomePage extends Base {
 	private String[] menuLinksTextArr = {"Why Asana?", "Solutions", "Resources"};
 	
 // elements
-	FindBy(id )
+ public void homePageOpen(WebDriver driver) {
+	 super.open(this.url);
+ }
 	
 // constructor 
-	public open
+
 }

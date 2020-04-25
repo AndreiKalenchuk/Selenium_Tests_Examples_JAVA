@@ -15,10 +15,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import _page.HomePage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 class Header {
-private static WebDriver driver;
+private WebDriver driver;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -30,7 +31,7 @@ private static WebDriver driver;
 		driver = new ChromeDriver();
 //		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
-		driver.get("https://asana.com/");
+	
 	}
 
 	@AfterEach
