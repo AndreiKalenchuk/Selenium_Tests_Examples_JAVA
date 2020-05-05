@@ -32,9 +32,9 @@ class FooterLinks {
 	@BeforeEach
 	void setUp() {
 		driver = new ChromeDriver();
-//		driver.manage().timeouts().i mplicitlyWait(10, TimeUnit.SECONDS);
+//		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
-		driver.get();
+		driver.get("https://asana.com/");
 	}
 
 	@AfterEach
@@ -63,7 +63,8 @@ class FooterLinks {
 	
 	@Test
 	void forEachFooter() {
-		List<WebElement> countOfLinks = driver.findElements(By.id("globalFooter"));
-		essertTrue(countOfLinks.forEach(el => el.isCleackable());)
+		assertTrue(driver.getTitle().contains("Asana"));
+//		List<WebElement> countOfLinks = driver.findElements(By.id("globalFooter"));
+//		essertTrue(countOfLinks.forEach(el --> el.isCleackable());
 	}
 }
