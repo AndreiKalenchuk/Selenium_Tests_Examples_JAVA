@@ -48,7 +48,7 @@ class WindowsSwitch {
 			if (!handle.equals(firstWindow)) 
 				secondWindow = handle;       // if current handle not equal firstWin --> it is a second
 			
-		////   OR   
+		////   OR   without
 		 for(String handle: driver.getWindowHandles())  
 			  if (!handle.equals(firstWindow)) 
 			      secondWindow = handle; 	
