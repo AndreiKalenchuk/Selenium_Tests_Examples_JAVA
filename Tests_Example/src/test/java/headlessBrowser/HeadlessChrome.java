@@ -18,21 +18,27 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 
 class HeadlessChrome {
 	static WebDriver driver;
 	static WebDriverWait wait;
 	private static TakesScreenshot ts;
+	private static Date date;
+	private static SimpleDateFormat format;
 
 	@BeforeAll
 	static void setUpBeforeClass() {
-		Class<? extends WebDriver> driverClass = ChromeDriver.class;
-		ChromeDriverManager.getInstance(driverClass).setup();
+//		Class<? extends WebDriver> driverClass = ChromeDriver.class;
+//		ChromeDriverManager.getInstance(driverClass).setup();
+		System.setProperty("webdriver.chrome.driver", "/chromedriver79/chromedriver.exe");
 		ChromeOptions chromeOptions = new ChromeOptions();
-		chromeOptions.addArguments("--headless");
+		chromeOptions.addArguments("headless");
 		driver = new ChromeDriver(chromeOptions);
 		wait = new WebDriverWait(driver, 10);
 		ts = (TakesScreenshot) driver;
@@ -44,23 +50,24 @@ class HeadlessChrome {
 	}
 
 	@Test
-	void test() {
+	void insertImageTakeScreenShot() {
 		driver.get("https://google.com/imghp");
-		WebElement imageBtn = driver.findElement(By.cssSelector("[aria-label=\"Search by image\"]"));
+		WebElement imageBtn = driver.findElement(By.cssSelector("[aria-label='Search by image']"));
 		wait.until(ExpectedConditions.elementToBeClickable(imageBtn));
 		imageBtn.click();
 		WebElement uploadImage = driver.findElement(By.linkText("Upload an image"));
 		wait.until(ExpectedConditions.elementToBeClickable(uploadImage));
 		uploadImage.click();
 		WebElement chouseFileBtn = driver.findElement(By.id("awyMjb"));
-		String imgName = "ci3.png";
+		String imgName = "ci16.png";
+		
 		chouseFileBtn.sendKeys("C:\\Users\\andre\\Desktop\\" + imgName);
 		WebElement getSearchValue = driver.findElement(By.xpath("//a[@class=\"Gj7ine\"]/div"));
 		wait.until(ExpectedConditions.visibilityOf(getSearchValue));
 		assertEquals(imgName, getSearchValue.getText());
 		
-		Date date = new Date();
-		SimpleDateFormat format = new SimpleDateFormat("hh_mm_ss");
+		date = new Date();
+		format = new SimpleDateFormat("hh_mm_ss");
 		String fileName = format.format(date) + ".png";
 		File screenshot = (ts.getScreenshotAs(OutputType.FILE));
 		try {
